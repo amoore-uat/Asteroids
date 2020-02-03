@@ -44,4 +44,16 @@ public class Player : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+    void OnCollisionEnter2D(Collision2D otherObject)
+    {
+        Debug.Log("[Collision Entered] The GameObject of the other object is named: " + otherObject.gameObject.name);
+    }
+
+    void OnCollisionExit2D(Collision2D otherObject)
+    {
+        Debug.Log("[Collision Exited] The GameObject of the other object is named: " + otherObject.gameObject.name);
+    }
+
+
 }
