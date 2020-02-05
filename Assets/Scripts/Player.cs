@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         tf = gameObject.GetComponent<Transform>();
+        
     }
 
     // Update is called once per frame
@@ -53,6 +54,20 @@ public class Player : MonoBehaviour
     void OnCollisionExit2D(Collision2D otherObject)
     {
         Debug.Log("[Collision Exited] The GameObject of the other object is named: " + otherObject.gameObject.name);
+    }
+
+    void OnDestroy()
+    {
+        // If the player dies, they lose a life.
+        GameManager.instance.lives -= 1;
+        if (GameManager.instance.lives > 0)
+        {
+            GameManager.instance.Respawn();
+        }
+        else
+        {
+            Debug.Log("Game Over");
+        }
     }
 
 
