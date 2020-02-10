@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject player;
+    public GameObject asteroidPrefab;
     public static GameManager instance;
     public int lives = 3;
     public int score = 0;
     public bool isPaused = false;
+    public List<GameObject> enemiesList = new List<GameObject>();
 
     public void Awake()
     {
@@ -30,11 +32,23 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        // This is just for demonstration.
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //if (player == null)
+            //{
+            //    Respawn();
+            //}
+
+            Instantiate(asteroidPrefab);
+
+        }
     }
 
     public void Respawn()
     {
-        Instantiate(playerPrefab);
+        player = Instantiate(playerPrefab);
     }
 
 }
