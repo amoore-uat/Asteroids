@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float movementSpeed = 1.0f;
 
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +46,7 @@ public class Player : MonoBehaviour
 
     public void Shoot()
     {
-        throw new NotImplementedException();
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 
     void OnCollisionEnter2D(Collision2D otherObject)
