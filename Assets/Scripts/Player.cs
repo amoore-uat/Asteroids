@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         tf = gameObject.GetComponent<Transform>();
+        if (GameManager.instance.player == null)
+        {
+            GameManager.instance.player = this.gameObject;
+        }
         
     }
 
@@ -62,15 +66,7 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         // If the player dies, they lose a life.
-        GameManager.instance.lives -= 1;
-        if (GameManager.instance.lives > 0)
-        {
-            GameManager.instance.Respawn();
-        }
-        else
-        {
-            Debug.Log("Game Over");
-        }
+        GameManager.instance.Die();
     }
 
 
